@@ -1,5 +1,18 @@
 <html>
-    <body>
-        <script type="module" src="./src/index.ts"></script>
-    </body>
+
+<body>
+    <script>
+        async function loadMapScript() {
+            const res = await fetch('http://localhost:3000/config');
+            const { apiKey } = await res.json();
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&loading=async`;
+            script.async = true;
+            document.head.appendChild(script);
+        }
+        window.onload = loadMapScript;
+    </script>
+    <script type="module" src="./src/index.ts"></script>
+</body>
+
 </html>
