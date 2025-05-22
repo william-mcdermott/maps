@@ -6,20 +6,11 @@
         const res = await fetch('http://localhost:3000/config');
         const { apiKey } = await res.json();
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&loading=async`;
         script.async = true;
         document.head.appendChild(script);
       }
       window.onload = loadMapScript;
-      window.initMap = () => {
-        new google.maps.Map(document.getElementById('map'), {
-          zoom: 1,
-          center: {
-            lat: 0,
-            lng: 0,
-          },
-        });
-      };
     </script>
     <div id="map" style="height: 100%"></div>
   </body>
