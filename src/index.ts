@@ -7,8 +7,8 @@ const user = new User();
 const company = new Company();
 const initMap = () => {
     const customMap = new CustomMap('map');
-    customMap.addUserMarker(user);
-    customMap.addCumpanyMarker(company)
+    customMap.addMarker(user);
+    customMap.addMarker(company)
 };
 
 (window as any).initMap = initMap
