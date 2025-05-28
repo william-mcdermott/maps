@@ -17,17 +17,26 @@ export class CustomMap {
           lat: 0,
           lng: 0,
         },
+        mapId: 'UBBAS_MAP'
       }
     );
   }
 
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.marker.AdvancedMarkerElement({
         map: this.googleMap,
         position: {
             lat: mappable.location.lat,
             lng: mappable.location.lng
         }
-    })
+    });
+
+    marker.addListener('gmp-click', () => {
+        const infoWindow = new google.maps.InfoWindow({
+            content: 'Hi there!'
+        });
+        infoWindow.open(this.googleMap, marker);
+    });
+
   }
 }
